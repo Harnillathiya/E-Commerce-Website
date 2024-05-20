@@ -1,0 +1,138 @@
+.close_2 {
+    position: absolute !important;
+    top: 20px;
+    right: 4px;
+    color: rgba(0, 0, 0, 0.8) !important;
+    min-width: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    font-size: 30px !important;
+}
+
+.productmodal .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+    padding: 25px !important;
+    position: relative;
+    max-width: 900px !important;
+    width: 900px !important;
+    height: auto !important;
+}
+
+.productZoom {
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.zoomSliderBig {
+    width: 100% !important;
+}
+
+.zoomSlider {
+    padding-top: 30px;
+}
+
+.zoomSlider .slick-slide {
+    padding-right: 20px !important;
+}
+
+.zoomSlider * {
+    outline: none !important;
+}
+
+.zoomSlider .item {
+    border: 2px solid transparent !important;
+    overflow: hidden;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.zoomSlider .slick-current .item {
+    border: 2px solid #3bb77e !important;
+}
+
+.zoomSlider .slick-arrow {
+    top: 55% !important;
+    zoom: 80% !important;
+}
+
+.zoomSlider .slick-arrow .slick-next {
+    right: -2px !important;
+}
+
+.zoomSlider .slick-arrow .slick-next {
+    left: -5px !important;
+}
+
+.info .oldPrice {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.2);
+    text-decoration: line-through;
+}
+
+.info .netPrice {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.info_details .bg-success {
+    background: #e5f8ed !important;
+    color: #16b858 !important;
+    display: inline-block;
+    padding: 7px 10px;
+    border-radius: 15px;
+}
+
+.quantity .btn-blue {
+    background-color: #233a95 !important;
+    font-size: 15px !important;
+    padding: 7px 30px !important;
+    border-radius: 30px !important;
+    color: aliceblue;
+    text-transform: capitalize;
+}
+.quantity-button{
+    width: 150px ;
+    gap: 10px;
+}
+.quantity-button button{
+    min-width: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: #edeef5 !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: black;
+}
+.quantity-button button svg{
+    color: black !important;
+}
+
+.quantity .quantity-button button:hover {
+    background: #ffcd00 !important;
+    transition: 0.5s;
+}
+.quantity input{
+    width: 20px !important;
+    text-align: center !important;
+}
+.btn-round{
+    text-transform: capitalize !important;
+    border-radius: 30px !important;
+}
+.wishlist{
+    font-size: 12px !important;
+    text-transform: capitalize !important;
+    color: black !important;
+    border:  1px solid #d9d9e9 !important;
+}
+.wishlist svg{
+    font-size: 20px;
+}
+.wishlist-2{
+    border:  0px transparent !important;
+}

@@ -1,0 +1,337 @@
+.bg-blue {
+    background: #233a95;
+}
+.sign_btn{
+    margin-right: 10px !important;
+}
+ul {
+    padding: 0 !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.headerWrapper .top-strip {
+    padding: 8px 0px;
+}
+
+.headerWrapper {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.headerWrapper .top-strip p {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    word-spacing: 2px;
+}
+
+.headerWrapper .header {
+    width: 100%;
+    height: auto;
+    padding: 25px 0px;
+}
+
+.logoWrapper img {
+    width: 100%;
+}
+
+.headerWrapper .header .part-2 .countryDrop {
+    width: 150px;
+    height: 60px;
+    max-width: 150px;
+    text-align: left;
+    justify-content: flex-start;
+    color: black;
+    border: 1px solid #e9e9e9;
+    margin-left: 10px;
+}
+
+.headerWrapper .header .part-2 .countryDrop .lable {
+    color: black;
+    line-height: 16px;
+}
+
+.headerSearch {
+    width: 60%;
+    height: 60px;
+    background: #f7f3f3;
+    padding: 10px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.headerSearch input {
+    background: #f7f3f3 !important;
+    outline: none !important;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 40px;
+    border: 0;
+    padding: 0px 25px !important;
+}
+
+.headerSearch button {
+    position: absolute;
+    border-radius: 50% !important;
+    top: 10px;
+    right: 15px;
+    z-index: 100;
+    min-width: 40px;
+    height: 40px !important;
+    color: black;
+}
+
+.userinfo Button {
+    border: none;
+    background-color: #fff;
+    min-width: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.userinfo svg {
+    font-size: 40px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.userinfo {
+    justify-content: center;
+    align-items: center;
+}
+
+.cartTab Button {
+    background: #fff1ee;
+}
+
+.cartTab Button svg {
+    color: #ea2b0f;
+}
+
+.cartTab .price {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 700;
+}
+
+.cartTab .count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #ea2b0f;
+    width: 20px;
+    height: 20px;
+}
+
+nav .allcatTab {
+    color: #fff;
+    background: #2bbef9;
+    padding: 15px 15px;
+    border-radius: 30px;
+}
+
+nav .allcatTab:hover {
+    background: #2bbef9;
+}
+
+nav .allcatTab .text {
+    font-weight: 700;
+}
+
+nav .allcatTab .icon-1 svg {
+    font-size: 20px;
+}
+
+nav .allcatTab .icon-2 svg {
+    font-size: 20px;
+}
+
+nav .navpart1 .catWrapper {
+    position: relative;
+}
+
+nav .navpart1 .catWrapper .sidebarNav {
+    width: 100%;
+    height: 0px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    background: #fff;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 119%;
+    left: 0px;
+    border: 1px solid #d5d4d4a3;
+    padding: 15px 0px;
+    visibility: hidden;
+    height: auto;
+    z-index: 100;
+}
+
+nav .navpart1 .catWrapper .sidebarNav.open {
+    opacity: 1;
+    visibility: inherit;
+}
+
+nav .navpart1 .catWrapper .sidebarNav ul li {
+    width: 100%;
+    padding: 0px 15px;
+}
+
+nav .navpart1 .catWrapper .sidebarNav ul li Button {
+    color: #000;
+    font-weight: 600;
+    width: 100%;
+    justify-content: flex-start;
+    text-transform: capitalize !important;
+}
+
+nav .navpart1 .catWrapper .sidebarNav ul li Button:hover {
+    background: transparent !important;
+}
+nav .navpart1 .catWrapper .sidebarNav ul li{
+    position: static;
+}
+nav .navpart1 .catWrapper .sidebarNav ul li .submenu{
+    position: absolute;
+    top: 0px;
+    left: 101%;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+nav .navpart1 .catWrapper .sidebarNav ul li:hover .submenu{
+    opacity: 1;
+    visibility: inherit;
+    left: 100%;
+}
+nav .navpart2 ul {
+    margin-bottom: 0px;
+}
+
+nav .navpart2 ul li a {
+    text-decoration: none;
+}
+
+nav .navpart2 ul li {
+    padding-bottom: 20px;
+}
+
+nav .navpart2 ul li a button {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 8px 15px;
+    border-radius: 25px;
+    transition: all 0.2s ease-in-out;
+}
+
+nav .navpart2 ul li a:hover {
+    color: #2bbefe;
+}
+
+nav .navpart2 ul li {
+    position: relative;
+}
+
+nav .navpart2 ul li .submenu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: 0px;
+    min-width: 200px;
+    background: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.1s ease-in-out;
+    z-index: 100;
+}
+
+nav .navpart2 ul li .submenu a {
+    display: block;
+    width: 100%;
+}
+
+nav .navpart2 ul li .submenu a Button {
+    width: 100%;
+    border-radius: 0px !important;
+    text-transform: capitalize !important;
+    justify-content: flex-start;
+}
+
+nav .navpart2 ul li:hover .submenu {
+    opacity: 1;
+    visibility: inherit;
+}
+
+nav .navpart2 ul li .submenu a Button:hover {
+    background: #f1f1f1 !important;
+}
+
+.locationModal .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+    padding: 25px !important;
+    position: relative;
+}
+
+.locationModal .countrylist {
+    margin-bottom: 0px;
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.locationModal .countrylist li {
+    width: 100%;
+    list-style: none;
+}
+
+.locationModal .countrylist li Button.active {
+    background: #e9dbdb;
+}
+
+.locationModal .countrylist li Button {
+    width: 100%;
+    text-transform: capitalize !important;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 11px 3px !important;
+    justify-content: flex-start;
+}
+
+.locationModal .close_ {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: rgba(0, 0, 0, 0.8);
+    min-width: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    font-size: 30px;
+}
