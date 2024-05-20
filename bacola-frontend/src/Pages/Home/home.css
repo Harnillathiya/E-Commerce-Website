@@ -1,0 +1,367 @@
+@media (max-width: 768px) {
+    .homeprdoucts {
+        padding: 15px 0px;
+    }
+
+    .col-md-12 {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+.text-home {
+    color: rgba(165, 165, 165, 1) !important;
+    font-size: 16px;
+}
+
+.homeBannerSection {
+    position: relative;
+    outline: none !important;
+}
+
+
+.homeprdoucts {
+    padding: 25px 0px;
+    width: 100%;
+}
+
+.homeprdoucts .banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.homeprdoucts .banner img {
+    border-radius: 10px;
+}
+
+.text-home {
+    color: rgba(165, 165, 165, 1) !important;
+    font-size: 16px;
+}
+
+.home-banner {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+}
+
+.home-banner .cursor {
+    cursor: pointer;
+}
+
+.home-banner .text-wrapper {
+    position: absolute;
+    top: 36%;
+    left: 36%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.home-banner:hover .text-wrapper {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(-10px);
+}
+
+.home-banner img {
+    width: 100%;
+    height: 100%auto;
+    border-radius: 10px;
+}
+
+.homeprdoucts .banner-btn {
+    padding: 8px 15px;
+    border: 1px solid #ffe5e5;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: black;
+}
+
+
+
+.productitem .details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+.productitem .badge {
+    color: black;
+    background: linear-gradient(45deg, black, transparent);
+    position: absolute;
+    display: inline-block;
+    padding: 7px 10px;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+}
+
+.productitem {
+    width: 100%;
+    height: auto;
+    position: relative !important;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .2s;
+    -moz-transition: .2s;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+}
+
+.productitem:hover {
+    -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #BCE3C9 !important;
+    transition: .2s !important;
+    -moz-transition: .2s;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+}
+
+
+.productitem .imgWrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.productitem .imgWrapper:hover .actions {
+    opacity: 1;
+}
+
+.productitem .actions {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.productitem .actions Button {
+    display: flex;
+    min-width: 40px !important;
+    height: 40px !important;
+    width: 40px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%) !important;
+    transition: background-color 0.3s ease;
+}
+
+.productitem .actions Button:hover {
+    background-color: #052796;
+}
+
+.productitem .actions Button:hover svg {
+    color: #fff !important;
+}
+
+.productitem .actions Button svg {
+    color: #000000;
+    opacity: 0.7;
+}
+
+.productitem .imgWrapper img {
+    transition: all 0.3s ease-in-out;
+}
+
+.productitem .imgWrapper:hover img {
+    transform: scale(1.1);
+}
+
+.homeCat .swiper .item {
+    padding: 15px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: #feefea;
+}
+
+.homeCat .swiper .item:hover {
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #BCE3C9;
+    -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+/* .homeCat .swiper .item img{
+    width: 80%;
+} */
+.homeCat {
+    padding: 35px 0px;
+    overflow: hidden;
+}
+
+.mySwiper {
+    width: 100%;
+    height: auto;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+
+.homeCat .item {
+    padding: 15px;
+    width: 100%;
+    height: auto;
+    background: #feefea;
+    border-radius: 10px;
+}
+
+.item h6 {
+    margin-top: 10px;
+}
+
+.homeCat .swiper {
+    overflow: inherit !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 40px !important;
+    height: 40px !important;
+    background: rgb(255, 254, 254);
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: -35px !important;
+    z-index: 1000 !important;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.swiper-button-next {
+    right: 25px !important;
+}
+
+.swiper-button-prev {
+    left: 90%;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 14px !important;
+    color: black;
+    font-weight: 600;
+}
+
+.hd {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.productRow2 {
+    flex-wrap: wrap;
+}
+
+.productRow2 .productitem {
+    width: 24% !important;
+    border: 1px solid #c0c0c0bd;
+}
+
+.banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.text-wrapper-banner {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    transition: bottom 0.4s ease-in-out;
+}
+
+.banner:hover .text-wrapper-banner {
+    bottom: 0;
+}
+
+.text-wrapper-banner h2 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.text-wrapper-banner Button {
+    background-color: #ffffffe0;
+    color: #0c0c0c;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.text-wrapper-banner Button:hover {
+    background-color: #0633b7;
+    color: #fff;
+}
+
+.sticky {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}

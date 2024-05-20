@@ -1,0 +1,306 @@
+.product_Listing_Page .product_Listing_Section .productListing {
+    gap: 20px;
+}
+
+.product_Listing_Page .product_Listing_Section .sidebar {
+    width: 20%;
+    flex: 0 0 20%;
+}
+
+
+.product_Listing_Page .product_Listing_Section .sidebar .scroll ul li {
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.product_Listing_Page .product_Listing_Section .sidebar .scroll {
+    padding-left: 5px;
+}
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+    padding: 3px !important;
+    margin-right: 10px !important;
+}
+
+.css-ahj2mt-MuiTypography-root {
+    font-size: 13px !important;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+
+
+.widget .widget-title {
+    font-family: var(--font-secondary);
+    font-size: .9375rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin-bottom: 1.25rem;
+}
+
+.widget_price_filter form {
+    position: relative;
+    color: #71778e;
+}
+
+.ui-widget-content {
+    height: 4px;
+    background-color: #f3f3f6;
+    margin-bottom: 1.5625rem;
+    border-radius: 4px;
+}
+
+.ui-widget-content .ui-slider-range {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border: 0;
+    background-color: #202435;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.ui-widget-content .ui-slider-handle {
+    left: 0%;
+    position: absolute;
+    cursor: pointer;
+    background-color: #202435;
+    border-radius: 100%;
+    height: 14px;
+    top: -5px;
+    width: 14px;
+}
+
+.ui-widget-content .ui-slider-handle:last-child {
+    left: 100%;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.price_slider_amount {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.price_slider_amount .button {
+    color: #202435;
+}
+
+.price_slider_amount .button {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    height: auto;
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+.price_slider_amount .price_label span {
+    font-weight: 600;
+    color: #202435;
+}
+
+@media screen and (min-width: 64rem) {
+    .content-wrapper.sidebar-left .content-primary {
+        padding-left: 1.875rem;
+    }
+}
+
+.shop-banner {
+    margin-bottom: 1.25rem;
+}
+
+.align-middle {
+    vertical-align: middle !important;
+}
+
+.shop-banner .banner-wrapper {
+    text-align: inherit !important;
+}
+
+.module-banner .banner-wrapper {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    border-radius: 7px !important;
+}
+
+.module-banner.align-middle .banner-wrapper {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.module-banner .banner-wrapper {
+    display: flex;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.module-banner.align-center .banner-wrapper {
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.module-banner .banner-thumbnail {
+    position: relative;
+}
+
+.module-banner .banner-content {
+    position: absolute;
+    top: 35px;
+    max-width: 80%;
+    padding: 1.875rem;
+    z-index: 1;
+}
+
+@media screen and (max-width: 64rem) {
+    .module-banner .banner-content {
+        position: absolute;
+        max-width: 70%;
+        padding: 1.875rem 2.5rem;
+    }
+
+    .module-banner .banner-thumbnail {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+}
+
+@media screen and (min-width: 64rem) {
+    .module-banner .banner-content {
+        position: absolute;
+        max-width: 70%;
+        padding: 1.875rem 2.5rem;
+    }
+
+    .module-banner .banner-thumbnail {
+        position: relative;
+    }
+
+}
+
+.module-banner .banner-content .entry-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -.8px;
+    margin-bottom: 5px;
+}
+
+.module-banner .banner-content .entry-subtitle.xlight {
+    font-weight: 200;
+}
+
+.color-text {
+    color: #202435;
+}
+
+.module-banner .banner-content .entry-title.large {
+    font-size: 1.875rem;
+}
+
+.module-banner .banner-content .entry-title strong {
+    font-weight: 600;
+}
+
+.color-success {
+    color: #00b853;
+}
+
+.showby {
+    width: 100%;
+    height: 50px;
+    background: #f7f8fd;
+    border-radius: 10px;
+    padding: 15px 15px;
+}
+
+.product_Listing_Page .product_Listing_Section .content_right {
+    width: 80%;
+    flex: 0 0 80%;
+}
+
+.product_Listing_Page .product_Listing_Section .content_right .showby .btnwrapper Button {
+    min-width: 30px !important;
+    height: 30px !important;
+    width: 30px !important;
+    border-radius: 50% !important;
+    color: #000 !important;
+}
+
+.product_Listing_Page .product_Listing_Section .content_right .showby .btnwrapper Button svg {
+    opacity: 0.5;
+}
+
+.product_Listing_Page .product_Listing_Section .content_right .showby .btnwrapper Button:hover svg {
+    opacity: 1;
+}
+
+.showByfilter button {
+    min-width: auto !important;
+    color: #000 !important;
+}
+
+.productlisting {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.productlisting .four {
+    width: 23%;
+}
+.productlisting .three{
+    width: 31.5%;
+}
+.productlisting .two{
+    width: 47%;
+}
+.productlisting .one{
+    width: 100%;
+    display: flex !important;
+    align-items: center !important;
+}
+.productlisting .one .imgWrapper{
+    width: 20%;
+}

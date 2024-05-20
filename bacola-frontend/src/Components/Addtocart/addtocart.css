@@ -1,0 +1,157 @@
+.cart-container {
+    width: 80%;
+    margin: 100px auto;
+  }
+  
+  .cart-header {
+    margin: 20px 0;
+  }
+  
+  .cart-header a {
+    text-decoration: none;
+    color: blue;
+  }
+  
+  .cart-header span {
+    color: gray;
+  }
+  
+  .cart-main {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cart-summary {
+    width: 60%;
+  }
+  
+  .free-shipping-banner {
+    background: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+  }
+  
+  .free-shipping-banner span {
+    color: red;
+  }
+  
+  .progress-bar {
+    background: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  .progress {
+    background: red;
+    height: 100%;
+    width: 25%;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .cart-item img {
+    width: 50px;
+    margin-right: 20px;
+  }
+  
+  .cart-item-details {
+    flex-grow: 1;
+  }
+  
+  .cart-item-details p {
+    margin: 5px 0;
+  }
+  
+  .quantity-control {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-control button {
+    background: none;
+    border: 1px solid #e0e0e0;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .quantity-control span {
+    margin: 0 10px;
+  }
+  
+  .remove-item {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+  }
+  
+  .coupon-section {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .coupon-section input {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .coupon-section button {
+    padding: 10px 20px;
+    border: none;
+    background: blue !important;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .cart-totals {
+    width: 35%;
+  }
+  
+  .cart-totals p {
+    margin: 10px 0;
+  }
+  
+  .cart-totals span {
+    float: right;
+  }
+  
+  .shipping-options {
+    margin-top: 20px;
+  }
+  
+  .shipping-options p {
+    margin: 10px 0;
+  }
+  
+  .shipping-options label {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  .shipping-options a {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .checkout-button {
+    width: 100%;
+    padding: 15px;
+    background: red !important;
+    color: white !important;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
