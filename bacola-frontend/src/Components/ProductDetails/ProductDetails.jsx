@@ -1,38 +1,44 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../../Components/ProductDetails/productDetails.css';
 import Quantitybox from '../QuantityBox/Quantitybox';
-import ProductZoom from '../ProductZoom/ProductZoom';
-import { Button, Link } from '@mui/material';
+import { Button } from '@mui/material';
 import { CiHeart } from 'react-icons/ci';
 import { IoIosGitCompare } from 'react-icons/io';
 import { PiTruckThin } from "react-icons/pi";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { SiWorldhealthorganization } from "react-icons/si";
-
+import { Mycontext } from '../../App';
 
 const ProductDetails = () => {
+  const { url } = useContext(Mycontext);
+  const location = useLocation()
+  console.log(location);
+  const data = location.state.item;
+  console.log(data.image);
+
   return (
     <section className='ProductDetails section'>
       <div className="container">
         <nav className="breadcrumbs">
-          <Link to='/Home'>Home</Link> &gt; <a href="Meats & Seafood">Meats & Seafood</a> &gt; All Natural Italian-Style Chicken Meatballs
+          <Link to='/Home'>Home</Link> &gt; <a href="/Meats & Seafood">Meats & Seafood</a> &gt; {data.name}
         </nav>
-        <h1 className='hd text-capitalize'>All Natural Italian-Style Chicken Meatballs</h1>
+        <h1 className='hd text-capitalize'>{<datalist></datalist>}{data.name}</h1>
         <div className="product-main row">
-          <div className=" col-md-4product-images" style={{ width: '500px' }}>
-            <ProductZoom />
+          <div className="col-md-4 product-images" style={{ width: '500px' }}>
+            <img src={url + "/images/" + data.image} alt='' className='w-100'/>
           </div>
           <div className="product-info col-md-8">
             <div className="row">
               <div className="col-md-6">
                 <div className="brand-review">
-                  <span>Brand: Welch's</span> | <span className="review-stars">★★★☆☆</span>
+                  <span>Brand: {data.brand}</span> | <span className="review-stars">★★★★☆</span>
                 </div>
                 <div className="price">
-                  $7.25 <span className="old-price">$9.35</span>
+                  ${data.price} <span className="old-price">${data.oldPrice}</span>
                 </div>
                 <div className="description">
-                  Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent.
+                  {data.description}
                 </div>
                 <div className="quantity-selector">
                   <Quantitybox />
@@ -43,11 +49,11 @@ const ProductDetails = () => {
                   <Button className='btn-round wishlist wishlist-2 ml-3' variant="outlined"> <IoIosGitCompare /> &nbsp; COMPARE</Button>
                 </div>
                 <div className="product-details mt-5">
-                  <p>Type: Organic</p>
-                  <p>MFG: Jun 4, 2021</p>
-                  <p>LIFE: 30 days</p>
-                  <p>Category: Meats & Seafood</p>
-                  <p>Tags: chicken, natural, organic</p>
+                  <p>Type: {data.type}</p>
+                  <p>MFG: {data.mfgDate}</p>
+                  <p>LIFE: {data.life}</p>
+                  <p>Category: {data.category}</p>
+                  <p>Tags: {data.tags}</p>
                 </div>
                 <div className="social-icons mobile-social-icon mt-10">
                   <a href="/facebook"><img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-facebook-white.svg" alt="Facebook" /></a>
@@ -60,9 +66,9 @@ const ProductDetails = () => {
               <div className="col-md-6">
                 <div className="sidebar">
                   <div className="info-box d-flex flex-col">
-                    <p className='d-flex align-items-center'> <span className='mr-3 '><PiTruckThin /></span>Free Shipping apply to all orders over $100</p>
-                    <p className='d-flex align-items-center'><span className='mr-3 '><SiWorldhealthorganization /></span>Guaranteed 100% Organic from natural farms</p>
-                    <p className='d-flex align-items-center'><span className='mr-3 '><RiMoneyDollarCircleLine /></span>1 Day Returns if you change your mind</p>
+                    <p className='d-flex align-items-center'> <span className='mr-3'><PiTruckThin /></span>Free Shipping apply to all orders over $100</p>
+                    <p className='d-flex align-items-center'><span className='mr-3'><SiWorldhealthorganization /></span>Guaranteed 100% Organic from natural farms</p>
+                    <p className='d-flex align-items-center'><span className='mr-3'><RiMoneyDollarCircleLine /></span>1 Day Returns if you change your mind</p>
                   </div>
                 </div>
               </div>
@@ -75,4 +81,3 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
-

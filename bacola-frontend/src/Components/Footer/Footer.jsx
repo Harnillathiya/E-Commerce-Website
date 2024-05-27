@@ -5,19 +5,19 @@ const Footer = () => {
     return (
         <footer className="main">
             <section className="newsletter mb-15 wow animate__ animate__fadeIn animated">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="position-relative newsletter-inner">
-                                <div class="newsletter-content">
-                                    <h2 class="mb-20" data-sider-select-id="8abb5d22-d781-4c0a-9959-78d57fb3fd23">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="position-relative newsletter-inner">
+                                <div className="newsletter-content">
+                                    <h2 className="mb-20" data-sider-select-id="8abb5d22-d781-4c0a-9959-78d57fb3fd23">
                                         Stay home &amp; get your daily <br />
                                         needs from our shop
                                     </h2>
-                                    <p class="mb-45" data-sider-select-id="74a5de0e-e561-4e00-968a-60eff1003e57">Start You'r Daily Shopping with <span class="text-brand">Nest Mart</span></p>
-                                    <form class="form-subcriber d-flex">
+                                    <p className="mb-45" data-sider-select-id="74a5de0e-e561-4e00-968a-60eff1003e57">Start You'r Daily Shopping with <span className="text-brand">Nest Mart</span></p>
+                                    <form className="form-subcriber d-flex">
                                         <input className='form-subcriber-input' type="email" placeholder="Your emaill address" />
-                                        <button class="btn" type="submit">Subscribe</button>
+                                        <button className="btn" type="submit">Subscribe</button>
                                     </form>
                                 </div>
                                 <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/banner/banner-9.png" alt="newsletter" />

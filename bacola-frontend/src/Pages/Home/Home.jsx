@@ -3,18 +3,19 @@ import HomeBanner from '../../Components/HomeBanner/HomeBanner'
 import '../../Pages/Home/home.css'
 import { Button } from '@mui/material';
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Navigation } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import Productitem from '../../Components/Productitem/Productitem';
 import HomeCat from '../../Components/HomeCat/HomeCat';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 
 const Home = () => {
+  const navigate = useNavigate()
+
 
   return (
     <div>
@@ -50,62 +51,14 @@ const Home = () => {
               </div>
             </div>
             <div className="col-md-12 col-lg-9">
-              <div className="d-flex align-items-center">
-                <div className="info w-75 mb-0">
-                  <h3 className='mb-0 hd'>BEST SELLER</h3>
-                  <p className='text-home text-sml mb-0'>Do not miss the current offers until the end of March.</p>
-                </div>
-                <Button className='banner-btn ml-auto'>View all <FaArrowRightLong className='mr-2' /></Button>
-              </div>
-              <div className="produt_row w-100 mt-4">
-                <Swiper
-                  slidesPerView={4}
-                  spaceBetween={0}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  modules={[Navigation]}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <Productitem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Productitem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Productitem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Productitem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Productitem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Productitem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Productitem />
-                  </SwiperSlide>
-                </Swiper>
-              </div>
-
               <div className="d-flex align-items-center mt-5">
                 <div className="info w-75 mb-0">
                   <h3 className='mb-0 hd'>BEST SELLER</h3>
                   <p className='text-home text-sml mb-0'>Do not miss the current offers until the end of March.</p>
                 </div>
-                <Button className='banner-btn ml-auto'>View all <FaArrowRightLong className='mr-2' /></Button>
+                <Button className='banner-btn ml-auto' onClick={() => navigate('/Listing')} > -View all <FaArrowRightLong className='mr-2' /></Button>
               </div>
               <div className="produt_row productRow2 w-100 mt-4 d-flex">
-                <Productitem />
-                <Productitem />
-                <Productitem />
-                <Productitem />
-                <Productitem />
-                <Productitem />
-                <Productitem />
                 <Productitem />
               </div>
 
@@ -136,7 +89,7 @@ const Home = () => {
 
 
 
-      
+
     </div >
   )
 }

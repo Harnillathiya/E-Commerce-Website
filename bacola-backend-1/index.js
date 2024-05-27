@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import categoryRoutes from './routes/category.js';
+import userRoutes from './routes/user.js';
+import productRoutes from './routes/product.js';
+import cartRouter from "./routes/Cart.js";
 
 dotenv.config();
 
@@ -16,8 +18,10 @@ app.use(cors());
 app.use(cookieParser());
 
 // Routes
-app.use('/api', categoryRoutes);
-app.use('/images', express.static("uploads"));
+app.use('/api', userRoutes);
+app.use('/api/products', productRoutes);
+app.use("/images", express.static("uploads"));
+app.use("/api/cart", cartRouter);
 
 // Database connection
 mongoose.set("strictQuery", false);

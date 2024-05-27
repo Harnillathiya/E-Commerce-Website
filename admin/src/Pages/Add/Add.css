@@ -1,0 +1,67 @@
+.add-container {
+  width: 40%;
+  margin: 50px auto;
+  text-align: center;
+  color: #333;
+}
+
+.add-container h2 {
+  margin-bottom: 30px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-img-upload img {
+  width: 120px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.add-img-upload img:hover {
+  transform: scale(1.1);
+}
+
+.add-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.add-input label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-input input,
+.add-input textarea,
+.add-input select {
+  width: calc(100% - 10px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-category-price {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.add-btn {
+  width: 120px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #0056b3;
+}
