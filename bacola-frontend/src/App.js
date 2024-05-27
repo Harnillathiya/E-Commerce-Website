@@ -7,28 +7,52 @@ import Footer from './Components/Footer/Footer';
 import Listing from './Pages/Listing/Listing';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import AddToCart from './Components/Addtocart/AddToCart';
-import axios from 'axios';
 import Signup from './Pages/SignIn';
 import Login from './Pages/Login';
-
-const Mycontext = createContext();
+import axios from 'axios';
+import ProductItem from './Components/Productitem/Productitem';
+const Mycontext = createContext(null);
+const url = "http://localhost:9000";
 
 const App = () => {
   const [countrylist, setCountrylist] = useState([]);
   const [selectedCountry, setselectedCountry] = useState('');
   const [isheadershow, setIsheadrShow] = useState(true);
-  const [isLogin, setIsLogin] = useState(false);
-
+  const [list, setList] = useState([]);
+  const [isLogin, setIsLogin] = useState(!!localStorage.getItem('token'));
   useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries");
+    listProduct();
   }, []);
+  
 
-  const getCountry = async (url) => {
-    const res = await axios.get(url);
-    setCountrylist(res.data.data);
+  const listProduct = async () => {
+    const response = await axios.get(`${url}/api/products/list`);
+    if (response.data.success) {
+      setList(response.data.data);
+    } else {
+      console.log("Error");
+    }
   };
 
-  
+  const getCountry = async (url) => {
+    try {
+      const res = await axios.get(url);
+      setCountrylist(res.data.data);
+    } catch (error) {
+      console.error("Error fetching countries:", error);
+    }
+  };
+
+  const login = (token) => {
+    localStorage.setItem('token', token);
+    setIsLogin(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setIsLogin(false);
+  };
 
   const values = {
     countrylist,
@@ -36,29 +60,29 @@ const App = () => {
     setselectedCountry,
     isheadershow,
     setIsheadrShow,
-    setIsLogin,
     isLogin,
+    login,
+    logout,
+    url,
+    list,
   };
 
   return (
     <BrowserRouter>
       <Mycontext.Provider value={values}>
-        {
-          isheadershow === true && <Header />
-        }
+        {isheadershow && <Header />}
 
         <Routes>
-          <Route path='/home' exact element={<Home />} />
-          <Route path='/Listing' exact element={<Listing />} />
-          <Route path='/ProductDetails' exact element={<ProductDetails />} />
-          <Route path='/addToCart' exact element={<AddToCart />} />
-          <Route path='/signin' exact element={<Signup />} />
-          <Route path='/login' exact element={<Login />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/Listing' element={<Listing />} />
+          <Route path='/ProductDetails' element={<ProductDetails />} />
+          <Route path='/ProductItem' element={<ProductItem />} />
+          <Route path='/addToCart' element={<AddToCart />} />
+          <Route path='/signin' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
 
-        {
-          isheadershow === true && <Footer />
-        }
+        {isheadershow && <Footer />}
       </Mycontext.Provider>
     </BrowserRouter>
   );

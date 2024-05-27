@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import logo from "../../assets/logo.png";
+import logo from "../../assets/assets_2/logo.png";
 import '../Header/header.css';
 import Dropdown from '../ContryDropdown/Dropdown';
 import { Button } from '@mui/material';
@@ -16,7 +16,10 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const context = useContext(Mycontext);
   const navigate = useNavigate()
-
+  const handleLogout = () => {
+    context.logout();
+    navigate('/login');
+  };
 
   return (
     <div>
@@ -43,12 +46,22 @@ const Header = () => {
                 }
                 <HeaderSearch />
                 <div className="part-3 d-flex align-items-center userinfo ml-auto">
-                  {
-                    context.isLogin !== true ? <Link to="/login"> <Button className='btn-blue btn-md btn-big btn-round w-100 sign_btn'>Signin</Button></Link> :
-                      <Button className="circle">
-                        <FaRegUserCircle  />
+                  {context.isLogin ? (
+                    <>
+                      <Button className="circle" onClick={handleLogout}>
+                        <FaRegUserCircle />
                       </Button>
-                  }
+                      <Button className='btn-blue btn-md btn-big btn-round w-100 sign_btn' onClick={handleLogout}>
+                        Logout
+                      </Button>
+                    </>
+                  ) : (
+                    <Link to="/login">
+                      <Button className='btn-blue btn-md btn-big btn-round w-100 sign_btn'>
+                        Login
+                      </Button>
+                    </Link>
+                  )}
                   <div className="ml-auto cartTab d-flex align-items-center">
                     <span className="price">$3.29</span>
                     <div className="position-relative ml-2">

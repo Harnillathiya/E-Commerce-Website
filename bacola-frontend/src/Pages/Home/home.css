@@ -129,7 +129,6 @@
     margin-bottom: 10px;
     position: relative;
     background-color: #fff;
-    border: 1px solid #ececec;
     border-radius: 15px;
     overflow: hidden;
     transition: .2s;
@@ -139,9 +138,7 @@
 }
 
 .productitem:hover {
-    -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-    border: 1px solid #BCE3C9 !important;
+    border: 0px !important;
     transition: .2s !important;
     -moz-transition: .2s;
     -webkit-transition: .2s;
@@ -229,10 +226,6 @@
     overflow: hidden;
 }
 
-.mySwiper {
-    width: 100%;
-    height: auto;
-}
 
 .swiper-slide {
     text-align: center;
@@ -313,12 +306,11 @@
 
 .productRow2 {
     flex-wrap: wrap;
+    width: 100% !important;
+    border: transparent;
+    padding: 10px;
 }
 
-.productRow2 .productitem {
-    width: 24% !important;
-    border: 1px solid #c0c0c0bd;
-}
 
 .banner {
     position: relative;

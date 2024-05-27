@@ -45,8 +45,8 @@
   }
   
   .progress {
-    background: red;
-    height: 100%;
+    background: red !important;
+    height: 100% !important;
     width: 25%;
   }
   
@@ -89,9 +89,9 @@
   .remove-item {
     background: none;
     border: none;
-    font-size: 20px;
-    color: red;
-    cursor: pointer;
+    font-size: 25px !important;
+    color: red !important;
+    cursor: pointer !important;
   }
   
   .coupon-section {

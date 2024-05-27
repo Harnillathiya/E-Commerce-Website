@@ -73,13 +73,6 @@ const Listing = () => {
 
                                                     <div className="productlisting">
                                                         <Productitem itemView={productView} />
-                                                        <Productitem itemView={productView} />
-                                                        <Productitem itemView={productView} />
-                                                        <Productitem itemView={productView} />
-                                                        <Productitem itemView={productView} />
-                                                        <Productitem itemView={productView} />
-                                                        <Productitem itemView={productView} />
-                                                        <Productitem itemView={productView} />
                                                     </div>
                                                 </div>
                                             </div>

@@ -112,13 +112,15 @@
     color: black !important;
 }
 
-.quantity .quantity-button button:hover {
+.quantity-button button:hover {
     background: #ffcd00 !important;
     transition: 0.5s;
 }
 .quantity input{
-    width: 20px !important;
+    width: 30px !important;
+    background: transparent !important;
     text-align: center !important;
+    scrollbar-width: 0px !important;
 }
 .btn-round{
     text-transform: capitalize !important;
@@ -136,3 +138,28 @@
 .wishlist-2{
     border:  0px transparent !important;
 }
+.productZoom .zoomSliderBig .item {
+    height: 500px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .productZoom .zoomSliderBig .item img,
+  .productZoom .zoomSliderBig .item .react-inner-image-zoom {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .productZoom .zoomSlider .item {
+    padding: 5px; 
+  }
+  
+  .productZoom .zoomSlider .item img {
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
