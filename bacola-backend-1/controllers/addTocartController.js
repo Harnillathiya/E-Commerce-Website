@@ -27,7 +27,6 @@ export const addToCart = async (req, res) => {
     }
 
     let cartData = user.cartData || [];
-    console.log(cartData, 'gggggggggggggggggggggg');
 
     const existingItemIndex = cartData.findIndex(item => item.itemId.toString() === itemId.toString());
 
@@ -43,11 +42,8 @@ export const addToCart = async (req, res) => {
       });
     }
 
-    const updatedUser = await User.findByIdAndUpdate(userId, { cartData }, { new: true });
-
-    if (!updatedUser) {
-      return res.status(500).json({ success: false, message: "Failed to update cart data" });
-    }
+    user.cartData = cartData;
+    const updatedUser = await user.save();
 
     res.json({ success: true, message: "Added to cart successfully", cartData: updatedUser.cartData });
   } catch (error) {
@@ -55,7 +51,6 @@ export const addToCart = async (req, res) => {
     res.status(500).json({ success: false, message: "Error adding to cart" });
   }
 };
-
 
 export const removeFromCart = async (req, res) => {
   try {
@@ -69,7 +64,7 @@ export const removeFromCart = async (req, res) => {
 
     let cartData = user.cartData || [];
 
-    const filteredCartData = cartData.filter(item => item.itemId.toString() !== itemId.toString());
+    const filteredCartData = cartData.filter(item => item?.itemId?.toString() !== itemId?.toString());
 
     user.cartData = filteredCartData;
     const updatedUser = await user.save();
@@ -80,7 +75,6 @@ export const removeFromCart = async (req, res) => {
     res.status(500).json({ success: false, message: "Error removing item from cart" });
   }
 };
-
 
 export const getCart = async (req, res) => {
   try {
@@ -93,11 +87,13 @@ export const getCart = async (req, res) => {
     }
 
     const cartData = user.cartData || [];
+    const productIds = cartData.map(item => item.itemId);
+    const products = await Product.find({ _id: { $in: productIds } });
 
-    const cartWithProductDetails = await Promise.all(cartData.map(async (item) => {
-      const product = await Product.findById(item.itemId);
+    const cartWithProductDetails = cartData.map(item => {
+      const product = products.find(p => p._id.toString() === item.itemId.toString());
       return { ...item.toObject(), product };
-    }));
+    });
 
     res.json({ success: true, cartData: cartWithProductDetails });
   } catch (error) {
@@ -105,4 +101,3 @@ export const getCart = async (req, res) => {
     res.status(500).json({ success: false, message: "Error fetching cart data" });
   }
 };
-

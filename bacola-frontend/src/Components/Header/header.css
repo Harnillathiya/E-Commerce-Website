@@ -335,3 +335,8 @@ nav .navpart2 ul li .submenu a Button:hover {
     border-radius: 50% !important;
     font-size: 30px;
 }
+.active{
+    border: 2px solid black;
+    border-radius: 50%;
+    transition: 0.2s;
+}

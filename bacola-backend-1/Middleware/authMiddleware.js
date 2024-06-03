@@ -20,11 +20,17 @@ export const authMiddleware = async (req, res, next) => {
         if (!user) {
             return res.status(401).json({ error: "User not found" });
         }
- 
         req.user = user; 
-        next(); 
+        if(user.role === "user"){
+            next(); 
+        }else{
+            return res
+            .status(401)
+            .json({success: false, message: "you are not authorize"})
+        }
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Internal server error" });
     }
 };
+

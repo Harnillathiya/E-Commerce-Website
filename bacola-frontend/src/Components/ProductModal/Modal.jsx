@@ -47,26 +47,26 @@ const Modal = ({ product, closeProductModal, userId, cartItems, selectedProduct 
         <div className="d-flex align-items-center">
           <div className="d-flex align-items-center">
             <span>Brands:</span>
-            <span className='ml-1'>{product.brand}</span>
+            <span className='ml-1'>{product?.brand}</span>
           </div>
-          <Rating name="read-only" value={product.rating} readOnly />
+          <Rating name="read-only" value={product?.rating} readOnly />
         </div>
         <hr />
         <div className="row mt-3 productDetails">
           <div className="col-md-5">
-            <ProductZoom images={product.image} />
+            <ProductZoom images={product?.image} />
           </div>
           <div className="col-md-7 info_details">
             <div className="d-flex info align-items-center mb-3">
               <div className="oldPrice mr-2">
-                ${product.oldPrice}
+                ${product?.oldPrice}
               </div>
               <div className="netPrice text-danger">
-                ${product.price}
+                ${product?.price}
               </div>
             </div>
-            <span className="badge bg-success">{product.inStock ? 'IN STOCK' : 'OUT OF STOCK'}</span>
-            <p className='mt-2'>{product.description}</p>
+            <span className="badge bg-success">{product?.inStock ? 'IN STOCK' : 'OUT OF STOCK'}</span>
+            <p className='mt-2'>{product?.description}</p>
             <div className="quantity d-flex align-items-center">
               <Button className='btn-blue btn-lg btn-big btn-round' onClick={handleAddToCart}>Add to cart</Button>
             </div>

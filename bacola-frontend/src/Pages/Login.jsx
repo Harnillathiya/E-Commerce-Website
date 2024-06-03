@@ -1,21 +1,24 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { Link, useNavigate } from 'react-router-dom';
-import loginmark from "../assets/assets_2/loginmark.jpeg";
 import '../Pages/login.css';
 import { Mycontext } from '../App';
 import { BASE_URL } from "../config";
 
 const Login = () => {
-    const context = useContext(Mycontext);
+    const { setIsHeaderShow, login } = useContext(Mycontext);
     const navigate = useNavigate();
+    const [isSignup, setIsSignup] = useState(false);
     const [formData, setFormData] = useState({
         email: '',
-        password: ''
+        password: '',
+        username: ''
     });
 
     useEffect(() => {
-        context.setIsheadrShow(false);
-    }, [context]);
+        setIsHeaderShow(false);
+    
+    }, [setIsHeaderShow]);
 
     const handleChange = (e) => {
         setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -23,66 +26,141 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await fetch(`${BASE_URL}/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+        if (isSignup) {
 
-            const data = await response.json();
-            if (data.success) {
-                context.login(data.token);
-                context.setIsheadrShow(true);
-                navigate("/");
-            } else {
-                console.error('Failed to login:', data.message);
+            try {
+                const response = await fetch(`${BASE_URL}/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    setIsSignup(false);
+                }
+            } catch (error) {
+                // Handle error without alert
             }
-        } catch (error) {
-            console.error('Error:', error);
+        } else {
+
+            try {
+                const response = await fetch(`${BASE_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: formData.email,
+                        password: formData.password
+                    })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    login(data.token);
+                    setIsHeaderShow(true);
+                    if (data.role === "user") {
+                        navigate("/");
+                    } else {
+                        navigate("/admin");
+                        setIsHeaderShow(false);
+                    }
+                }
+            } catch (error) {
+                // Handle error without alert
+            }
         }
     };
 
+    const toggleForm = () => {
+        setIsSignup(!isSignup);
+        setFormData({ email: '', password: '', username: '' });
+    };
+
     return (
-        <div className="login-container container">
-            <div className="header_logo">
-                <img className="login-image" src={loginmark} alt="loginmark" />
+        <div className={`cont ${isSignup ? 's--signup' : ''}`}>
+            <div className="form sign-in">
+                <h2>Welcome</h2>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <span>Email</span>
+                        <input
+                            type="email"
+                            id="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input
+                            type="password"
+                            id="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
+                    <p className="forgot-pass">Forgot password?</p>
+                    <button type="submit" className="submit_4">{isSignup ? 'Sign Up' : 'Sign In'}</button>
+                </form>
             </div>
-            <form className="login-form" onSubmit={handleSubmit}>
-                <div className="input-field">
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required autoComplete="current-email"
-                        className="login-input"
-                    />
+            <div className="sub-cont">
+                <div className="img">
+                    <div className={`img__text m--up ${isSignup ? 'hidden' : ''}`}>
+                        <h3>Don't have an account? Please Sign up!</h3>
+                    </div>
+                    <div className={`img__text m--in ${isSignup ? '' : 'hidden'}`}>
+                        <h3>If you already have an account, just sign in.</h3>
+                    </div>
+                    <div className="img__btn" onClick={toggleForm}>
+                        <span className="m--up">Sign Up</span>
+                        <span className="m--in">Sign In</span>
+                    </div>
                 </div>
-                <div className="input-field">
-                    <input
-                        type='password'
-                        id="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required autoComplete="current-password"
-                        className="login-input"
-                    />
-                </div>
-                <div className="d-flex">
-                    <button type="submit" className="login-button mr-5">Log in</button>
-                    <Link to="/">
-                        <button type="button" className="signup_btn" onClick={() => context.setIsheadrShow(true)}>Cancel</button>
-                    </Link>
-                </div>
-                <p className="signup-link">
-                    Don't have an account? <Link to="/signin">Sign up now</Link>
-                </p>
-            </form>
+                {isSignup && (
+                    <div className="form sign-up">
+                        <h2>Create your Account</h2>
+                        <form onSubmit={handleSubmit}>
+                            <label>
+                                <span>Name</span>
+                                <input
+                                    type="text"
+                                    id="username"
+                                    value={formData.username}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </label>
+                            <label>
+                                <span>Email</span>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </label>
+                            <label>
+                                <span>Password</span>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </label>
+                            <button type="submit" className="submit_4">Sign Up</button>
+                        </form>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
