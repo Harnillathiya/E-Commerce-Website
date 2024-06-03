@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../../Components/ProductDetails/productDetails.css';
-import Quantitybox from '../QuantityBox/Quantitybox';
 import { Button } from '@mui/material';
 import { CiHeart } from 'react-icons/ci';
 import { IoIosGitCompare } from 'react-icons/io';
@@ -9,13 +8,12 @@ import { PiTruckThin } from "react-icons/pi";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { SiWorldhealthorganization } from "react-icons/si";
 import { Mycontext } from '../../App';
+import Quantitybox from '../QuantityBox/Quantitybox';
 
 const ProductDetails = () => {
   const { url } = useContext(Mycontext);
   const location = useLocation()
-  console.log(location);
   const data = location.state.item;
-  console.log(data.image);
 
   return (
     <section className='ProductDetails section'>
@@ -23,7 +21,7 @@ const ProductDetails = () => {
         <nav className="breadcrumbs">
           <Link to='/Home'>Home</Link> &gt; <a href="/Meats & Seafood">Meats & Seafood</a> &gt; {data.name}
         </nav>
-        <h1 className='hd text-capitalize'>{<datalist></datalist>}{data.name}</h1>
+        <h1 className='hd text-capitalize'>{data.name}</h1>
         <div className="product-main row">
           <div className="col-md-4 product-images" style={{ width: '500px' }}>
             <img src={url + "/images/" + data.image} alt='' className='w-100'/>
@@ -40,11 +38,20 @@ const ProductDetails = () => {
                 <div className="description">
                   {data.description}
                 </div>
-                <div className="quantity-selector">
-                  <Quantitybox />
-                </div>
+                {data.quantity > 0 ? (
+                  <div className="quantity-selector">
+                    <Quantitybox />
+                  </div>
+                ) : (
+                  <div className="out-of-stock">
+                    <p>Out of stock</p>
+                    <Button className='btn-blue btn-lg btn-big btn-round'>Notify Me</Button>
+                  </div>
+                )}
                 <div className="actions mt-3">
-                  <Button className='btn-blue btn-lg btn-big btn-round'>Add to cart</Button>
+                  {data.quantity > 0 && (
+                    <Button className='btn-blue btn-lg btn-big btn-round'>Add to cart</Button>
+                  )}
                   <Button className='btn-round wishlist' variant="outlined"> <CiHeart /> &nbsp; ADD TO WISHLIST</Button>
                   <Button className='btn-round wishlist wishlist-2 ml-3' variant="outlined"> <IoIosGitCompare /> &nbsp; COMPARE</Button>
                 </div>

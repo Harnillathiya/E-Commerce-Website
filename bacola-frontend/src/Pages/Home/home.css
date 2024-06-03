@@ -201,23 +201,22 @@
 }
 
 .homeCat .swiper .item {
-    padding: 15px;
+    padding: 12px;
     width: 100%;
     height: auto;
     border-radius: 10px;
     background: #feefea;
+    transition: all 0.2s;
 }
 
 .homeCat .swiper .item:hover {
     border-radius: 10px;
-    background: #fff;
-    border: 1px solid #BCE3C9;
-    -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
-    -webkit-transition: 0.2s;
-    transition: 0.2s;
+    box-shadow: 5px 5px 15px rgb(0 0 0 / 25%);
+    transition: all 0.2s; 
 }
-
+.homeCat .swiper .item:active{
+    border: 4px solid black;
+}
 /* .homeCat .swiper .item img{
     width: 80%;
 } */
@@ -226,6 +225,9 @@
     overflow: hidden;
 }
 
+.homecat_2 {
+    overflow: auto !important;
+}
 
 .swiper-slide {
     text-align: center;

@@ -1,0 +1,83 @@
+/* Add hover effect to order items */
+.order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.order-item:hover {
+  transform: translateY(-5px);
+  box-shadow: -1px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.order-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.order-item-details {
+  flex-grow: 1;
+}
+
+.order-item-details h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.order-item-details p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.order-item-actions {
+  display: flex;
+  align-items: center;
+}
+
+.order-item-actions select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.order-item-actions select:hover {
+  background-color: #f5f5f5;
+}
+
+.order-item-actions select:focus {
+  border-color: #007bff;
+}
+
+.order-item-actions select option {
+  background-color: #fff;
+}
+
+.order-item-actions select:focus option {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.order-item-actions select option:hover {
+  background-color: #0056b3;
+}
+
+.order-item-actions select option:checked {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.order-item-actions select:active {
+  background-color: #0056b3;
+  color: #fff;
+}

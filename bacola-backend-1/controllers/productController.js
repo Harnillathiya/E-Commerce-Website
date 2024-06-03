@@ -12,7 +12,9 @@ export const addProduct = async (req, res) => {
         image: req.body.image,
         category: req.body.category,
         image: image_filename,
+        quantity: req.body.quntity,
     });
+    console.log(req.body)
     try {
         await product.save();
         res.json({ success: true, message: "product Added" });
@@ -24,9 +26,23 @@ export const addProduct = async (req, res) => {
 
 
 export const listProduct = async (req, res) => {
+    const category = req.query.category;
+
     try {
-        const products = await Product.find({});
-        res.json({ success: true, data: products });
+        let products;
+        if (category && category !== "All") {
+            products = await Product.find({ category });
+        } else {
+            products = await Product.find({});
+        }
+        const processedProducts = products.map(product => {
+            return {
+                ...product._doc,
+                status: product.quantity === 0 ? "Out of Stock" : "In Stock"
+            };
+        });
+
+        res.json({ success: true, data: processedProducts });
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: "Error" });
@@ -49,3 +65,5 @@ export const removeProduct = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
+

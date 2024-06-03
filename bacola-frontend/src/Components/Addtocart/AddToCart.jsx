@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../../Components/Addtocart/addtocart.css';
-import Quantitybox from '../QuantityBox/Quantitybox';
 import { MdDeleteForever } from "react-icons/md";
 import { Button } from '@mui/material';
 import { BASE_URL } from '../../config';
 import { Mycontext } from '../../App';
+import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 const AddToCart = ({ userId }) => {
     const [cartItems, setCartItems] = useState([]);
     const { url } = useContext(Mycontext);
-    console.log(cartItems, ";;;;;;;;;");
+    const navigate = useNavigate();
+
 
     const fetchCartData = async () => {
         try {
@@ -26,7 +28,6 @@ const AddToCart = ({ userId }) => {
             const data = await response.json();
             if (data.success) {
                 setCartItems(Object.values(data.cartData));
-                console.log(data.cartData);
             } else {
                 console.error('Failed to fetch cart data:', data.message);
             }
@@ -37,8 +38,9 @@ const AddToCart = ({ userId }) => {
 
     useEffect(() => {
         fetchCartData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     const removeFromCart = async (itemId) => {
         try {
             const token = localStorage.getItem("token");
@@ -61,34 +63,17 @@ const AddToCart = ({ userId }) => {
             console.error('Error removing item from cart:', error);
         }
     };
-
-    const handleQuantityChange = async (itemId, newQuantity) => {
-        if (newQuantity < 1) return;
-
-        const updatedCartItems = cartItems.map(item =>
-            item.id === itemId ? { ...item, quantity: newQuantity } : item
-        );
-        setCartItems(updatedCartItems);
-
-        try {
-            const token = localStorage.getItem("token");
-            const response = await fetch(`${BASE_URL}/cart/addToCart`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: token,
-                },
-                body: JSON.stringify({ itemId: itemId, quantity: newQuantity })
-            });
-
-            const data = await response.json();
-            if (!data.success) {
-                console.error('Failed to update cart quantity:', data.message);
-            }
-        } catch (error) {
-            console.error('Error updating cart quantity:', error);
+    const proceedToCheckout = () => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            navigate('/order', {state: {cartItems: cartItems}})
+        } else {
+            toast.error("Please Login");
         }
     };
+
+    const subtotal = cartItems?.reduce((total, item) => total + item?.product?.price * item?.quantity, 0);
+    const total = subtotal + 5;
 
     return (
         <div className="cart-container container mt-7">
@@ -103,18 +88,26 @@ const AddToCart = ({ userId }) => {
                             <div className="progress"></div>
                         </div>
                     </div>
-                    {cartItems.map(item => (
-                        <div className="cart-item" key={item.product.id}>
-                            <img src={`${url}/images/${item.product.image}`} alt={item.product.name} />
-                            <div className="cart-item-details">
-                                <p>{item.product.name}</p>
-                                <p>${item.product.price}</p>
-                                <Quantitybox
-                                    quantity={item.product.quantity}
-                                    onQuantityChange={(newQuantity) => handleQuantityChange(item.product.id, newQuantity)}
-                                />
+                    <div className="cart-item-header">
+                        <div>Image</div>
+                        <div>Title</div>
+                        <div>Price</div>
+                        <div>Quantity</div>
+                        <div>Total</div>
+                        <div>Remove</div>
+                    </div>
+                    {cartItems?.map(item => (
+                        <div className="cart-item" key={item?.product?.id}>
+                            <div><img src={`${url}/images/${item?.product?.image}`} alt={item?.product?.name} /></div>
+                            <div>{item?.product?.name}</div>
+                            <div>${item?.product?.price}</div>
+                            <div>{item?.quantity}</div>
+                            <div>${(item?.product?.price * item?.quantity).toFixed(2)}</div>
+                            <div>
+                                <Button className="remove-item" onClick={() => removeFromCart(item.itemId)}>
+                                    <MdDeleteForever />
+                                </Button>
                             </div>
-                            <Button className="remove-item" onClick={() => removeFromCart(item.itemId)}><MdDeleteForever /></Button>
                         </div>
                     ))}
                     <div className="coupon-section">
@@ -123,7 +116,7 @@ const AddToCart = ({ userId }) => {
                     </div>
                 </div>
                 <div className="cart-totals">
-                    {/* <p>Subtotal: <span>${cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</span></p> */}
+                    <p>Subtotal: <span>${subtotal.toFixed(2)}</span></p>
                     <div className="shipping-options">
                         <p>Shipping:</p>
                         <label>
@@ -135,8 +128,8 @@ const AddToCart = ({ userId }) => {
                         <p>Shipping to AL.</p>
                         <a href="/">Change address</a>
                     </div>
-                    {/* <p>Total: <span>${cartItems.reduce((total, item) => total + item.price * item.quantity, 0) + 5}</span></p> */}
-                    <Button className="checkout-button">Proceed to checkout</Button>
+                    <p>Total: <span>${total.toFixed(0)}</span></p>
+                    <Button className="checkout-button" onClick={proceedToCheckout}>Proceed to checkout</Button>
                 </div>
             </div>
         </div>

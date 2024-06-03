@@ -17,7 +17,7 @@ const Footer = () => {
                                     <p className="mb-45" data-sider-select-id="74a5de0e-e561-4e00-968a-60eff1003e57">Start You'r Daily Shopping with <span className="text-brand">Nest Mart</span></p>
                                     <form className="form-subcriber d-flex">
                                         <input className='form-subcriber-input' type="email" placeholder="Your emaill address" />
-                                        <button className="btn" type="submit">Subscribe</button>
+                                        <button className="btn_submit" type="submit">Subscribe</button>
                                     </form>
                                 </div>
                                 <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/banner/banner-9.png" alt="newsletter" />
