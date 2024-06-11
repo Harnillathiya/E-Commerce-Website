@@ -8,7 +8,7 @@ import ProductZoom from '../ProductZoom/ProductZoom';
 import './model.css';
 import { BASE_URL } from '../../config';
 
-const Modal = ({ product, closeProductModal, userId, cartItems, selectedProduct }) => {
+const Modal = ({ product, closeProductModal, userId, }) => {
   const [quantity] = useState(1);
 
   const handleAddToCart = async () => {
@@ -73,6 +73,9 @@ const Modal = ({ product, closeProductModal, userId, cartItems, selectedProduct 
             <div className="d-flex align-items-center mt-5">
               <Button className='btn-round wishlist' variant="outlined"> <CiHeart /> &nbsp; ADD TO WISHLIST</Button>
               <Button className='btn-round wishlist wishlist-2 ml-3' variant="outlined"> <IoIosGitCompare /> &nbsp; COMPARE</Button>
+              <Button className='btn-round wishlist wishlist-2 ml-3' variant="outlined">
+                About this product
+              </Button>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Product from "../models/Product.js";
 import fs from "fs";
-
+import { getAllCategories } from "./allcategoryController.js";
 
 export const addProduct = async (req, res) => {
     let image_filename = `${req.file?.filename}`;
@@ -9,20 +9,20 @@ export const addProduct = async (req, res) => {
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
-        image: req.body.image,
-        category: req.body.category,
         image: image_filename,
-        quantity: req.body.quntity,
+        category: req.body.category,
+        quantity: req.body.quantity, 
     });
-    console.log(req.body)
+
     try {
         await product.save();
-        res.json({ success: true, message: "product Added" });
+        res.json({ success: true, message: "Product Added" });
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: "Error" });
     }
 };
+
 
 
 export const listProduct = async (req, res) => {
@@ -67,3 +67,44 @@ export const removeProduct = async (req, res) => {
 };
 
 
+export const getCategoryStats = async (req, res) => {
+    try {
+        const categoriesResponse = await getAllCategories();
+        const categories = categoriesResponse.data.map(category => category.name);
+
+        const categoryStats = await Promise.all(categories.map(async (category) => {
+            const count = await Product.countDocuments({ category });
+            return { category, count };
+        }));
+        res.json({ success: true, data: categoryStats });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+export const updateProduct = async (req, res) => {
+    const productId = req.params.id;
+    const { name, description, price, category, quantity } = req.body;
+    console.log( name, description, price, category, quantity , productId)
+
+    try {
+        const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(404).json({ success: false, message: "Product not found" });
+        }
+
+        product.name = name;
+        product.description = description;
+        product.price = price;
+        product.category = category;
+        product.quantity = quantity;
+
+        const updatedProduct = await product.save();
+        
+        res.json({ success: true, message: "Product updated", data: updatedProduct });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+};

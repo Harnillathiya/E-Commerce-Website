@@ -1,82 +1,57 @@
-/* Container styles */
+/* Add.css */
 .add-container {
   max-width: 600px;
-  margin: 50px auto;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  margin: 0 auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Title styles */
-.add-container h2 {
-  font-size: 24px;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-/* Form styles */
 .add-form {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Image upload styles */
-.add-img-upload label {
-  display: block;
-  text-align: center;
-  cursor: pointer;
+.add-img-upload {
+  margin-bottom: 16px;
 }
 
 .add-img-upload img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.add-img-upload img:hover {
-  transform: scale(1.1);
-  border: 2px solid #ced0d3;
-  box-shadow: 1px -1px 4px 0px black;
-}
-
-.add-img-upload input[type="file"] {
-  display: none;
-}
-
-/* Input styles */
-.add-input label {
-  font-size: 16px;
-  color: #333;
-}
-
-.add-input input,
-.add-input textarea,
-.add-input select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  outline: none;
+  height: auto;
+  cursor: pointer;
+  border: 1px dashed #d9d9d9;
+  border-radius: 4px;
 }
 
-/* Button styles */
+.add-category-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-category-price .add-input {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.add-category-price .add-input:last-child {
+  margin-right: 0;
+}
+
 .add-btn {
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  color: white;
   font-size: 16px;
+  padding: 8px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .add-btn:hover {
-  background-color: #0056b3;
+  background-color: #40a9ff;
+  border-color: #40a9ff;
 }

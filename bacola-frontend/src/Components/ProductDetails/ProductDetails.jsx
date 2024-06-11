@@ -1,19 +1,85 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../../Components/ProductDetails/productDetails.css';
-import { Button } from '@mui/material';
+import { Button, Modal } from '@mui/material'; // Assuming you use Material-UI for modals
 import { CiHeart } from 'react-icons/ci';
 import { IoIosGitCompare } from 'react-icons/io';
 import { PiTruckThin } from "react-icons/pi";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { SiWorldhealthorganization } from "react-icons/si";
+import { Rate } from 'antd';
 import { Mycontext } from '../../App';
 import Quantitybox from '../QuantityBox/Quantitybox';
+import { BASE_URL } from '../../config';
 
 const ProductDetails = () => {
   const { url } = useContext(Mycontext);
-  const location = useLocation()
-  const data = location.state.item;
+  const location = useLocation();
+  const { item: data, averageRating } = location.state;
+  const [userRating, setUserRating] = useState(0);
+  const [isRatingModalOpen, setIsRatingModalOpen] = useState(false);
+  const [newRating, setNewRating] = useState(0);
+  const [comment, setComment] = useState('');
+  useEffect(() => {
+    const fetchUserRating = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch(`${BASE_URL}/ratings/user/${data._id}`, {
+          headers: {
+            Authorization: token,
+          },
+        });
+        const result = await response.json();
+        setUserRating(result.userRating || 0);
+      } catch (error) {
+        console.error('Failed to fetch user rating:', error);
+      }
+    };
+    fetchUserRating();
+  }, [data._id]);
+
+  const handleRate = async (score) => {
+    try {
+      const token = localStorage.getItem("token");
+      await fetch(`${BASE_URL}/ratings/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token,
+        },
+        body: JSON.stringify({ productId: data._id, score }),
+      });
+      setUserRating(score);
+    } catch (error) {
+      console.error('Failed to submit rating:', error);
+    }
+  };
+
+  const openRatingModal = () => {
+    setIsRatingModalOpen(true);
+  };
+
+  const closeRatingModal = () => {
+    setIsRatingModalOpen(false);
+  };
+
+  const submitRating = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      await fetch(`${BASE_URL}/ratings/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token,
+        },
+        body: JSON.stringify({ productId: data._id, score: newRating }),
+      });
+      setUserRating(newRating);
+      closeRatingModal();
+    } catch (error) {
+      console.error('Failed to submit rating:', error);
+    }
+  };
 
   return (
     <section className='ProductDetails section'>
@@ -24,13 +90,14 @@ const ProductDetails = () => {
         <h1 className='hd text-capitalize'>{data.name}</h1>
         <div className="product-main row">
           <div className="col-md-4 product-images" style={{ width: '500px' }}>
-            <img src={url + "/images/" + data.image} alt='' className='w-100'/>
+            <img src={url + "/images/" + data.image} alt='' className='w-100' />
           </div>
           <div className="product-info col-md-8">
             <div className="row">
               <div className="col-md-6">
                 <div className="brand-review">
                   <span>Brand: {data.brand}</span> | <span className="review-stars">★★★★☆</span>
+                  <div>Average Rating: {averageRating}</div>
                 </div>
                 <div className="price">
                   ${data.price} <span className="old-price">${data.oldPrice}</span>
@@ -49,9 +116,6 @@ const ProductDetails = () => {
                   </div>
                 )}
                 <div className="actions mt-3">
-                  {data.quantity > 0 && (
-                    <Button className='btn-blue btn-lg btn-big btn-round'>Add to cart</Button>
-                  )}
                   <Button className='btn-round wishlist' variant="outlined"> <CiHeart /> &nbsp; ADD TO WISHLIST</Button>
                   <Button className='btn-round wishlist wishlist-2 ml-3' variant="outlined"> <IoIosGitCompare /> &nbsp; COMPARE</Button>
                 </div>
@@ -61,6 +125,11 @@ const ProductDetails = () => {
                   <p>LIFE: {data.life}</p>
                   <p>Category: {data.category}</p>
                   <p>Tags: {data.tags}</p>
+                </div>
+                <div className="rating-section mt-5">
+                  <h4>Rate this product</h4>
+                  <Rate allowHalf value={userRating} onChange={handleRate} />
+                  <Button onClick={openRatingModal}>Leave a Review</Button>
                 </div>
                 <div className="social-icons mobile-social-icon mt-10">
                   <a href="/facebook"><img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-facebook-white.svg" alt="Facebook" /></a>
@@ -83,6 +152,28 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+
+      {/* Rating Modal */}
+      <Modal
+        open={isRatingModalOpen}
+        onClose={closeRatingModal}
+        aria-labelledby="rating-modal-title"
+        aria-describedby="rating-modal-description"
+      >
+        <div className="rating-modal-content">
+          <h2 id="rating-modal-title">Leave a Review</h2>
+          <Rate allowHalf value={newRating} onChange={setNewRating} />
+          <textarea
+            placeholder="Add your comment..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            rows={4}
+            style={{ width: '100%', marginBottom: '20px', resize: 'vertical' }}
+          />
+          <Button onClick={submitRating}>Submit</Button>
+        </div>
+      </Modal>
+
     </section>
   );
 };

@@ -14,8 +14,8 @@
     overflow: hidden;
     transition: .2s;
 }
-.productitem>div:hover
-{
+
+.productitem>div:hover {
     box-shadow: 2px 2px 7px #c3b3b3 !important;
     transition: .15s;
 }
@@ -60,4 +60,15 @@
 
 .productitem .details .text-success {
     color: green;
+}
+
+.imgWrapper {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.imgWrapper img {
+    width: 100%;
+    height: auto;
 }

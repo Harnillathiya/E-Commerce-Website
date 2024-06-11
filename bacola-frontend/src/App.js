@@ -16,6 +16,9 @@ import List from './admin/Pages/List/List';
 import Orders from './admin/Pages/Orders/Orders';
 import PlaceOrder from './Components/Placeorder/Placeorder';
 import Useroder from './Pages/Useroder/Useroder';
+import Dashboard1 from './admin/Pages/Dashboard1/Dashboard1';
+import AddCategory from './admin/Pages/Category/Category';
+import Reviews from './admin/Pages/Reviews/Reviews';
 
 const Mycontext = createContext(null);
 const url = "http://localhost:9000";
@@ -32,7 +35,7 @@ const App = () => {
     getCountry("https://countriesnow.space/api/v0.1/countries");
     listProduct();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[category]);
+  }, [category]);
 
   const listProduct = async () => {
     try {
@@ -94,11 +97,15 @@ const App = () => {
           <Route path="/order" element={<PlaceOrder />} />
           <Route path='/addToCart' element={<AddToCart />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/admin' element={<Dashboard />} />
-          <Route path='/admin/add' element={<Add />} />
-          <Route path='/admin/list' element={<List />} />
-          <Route path='/admin/orders' element={<Orders />} />
-          <Route path='/useroder' element={<Useroder />} />
+          <Route path='/Useroder' element={<Useroder />} />
+          <Route path='/admin' element={<Dashboard />}>
+            <Route path='/admin' element={<Dashboard1 />} />
+            <Route path='/admin/add' element={<Add />} />
+            <Route path='/admin/list' element={<List/>} />
+            <Route path='/admin/orders' element={<Orders/>} />
+            <Route path="/admin/category" element={<AddCategory />} />
+            <Route path="/admin/Reviews" element={<Reviews />} />
+          </Route>
         </Routes>
 
         {isHeaderShow && <Footer />}

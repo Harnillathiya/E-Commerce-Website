@@ -8,6 +8,9 @@ import productRoutes from './routes/product.js';
 import cartRouter from "./routes/Cart.js";
 import orderRoutes from './routes/order.js';
 import paymentRouter from "./routes/payment.js";
+// import categoryRouter from "./routes/Allcategory.js";
+import allCategoryRouter from "./routes/Allcategory.js";
+import ratingRoutes from "./routes/rating.js";
 import Razorpay from "razorpay";
 
 dotenv.config();
@@ -33,6 +36,8 @@ app.use("/images", express.static("uploads"));
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRoutes);
 app.use("/api/payment", paymentRouter);
+app.use("/api/category", allCategoryRouter);
+app.use('/api/ratings', ratingRoutes);
 
 
 

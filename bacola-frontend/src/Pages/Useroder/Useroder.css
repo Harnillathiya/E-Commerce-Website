@@ -1,5 +1,20 @@
 .order-page {
-    max-width: 800px;
-    margin: auto;
-  }
-  
+  max-width: 800px;
+  margin: auto;
+}
+
+.filter-btn {
+  width: 100%;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.detais_btn span{
+  color: black !important;
+}
+
+.order {
+  margin: 50px;
+}

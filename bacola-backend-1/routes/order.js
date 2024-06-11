@@ -4,7 +4,7 @@ import {  listOrders, productStatus } from "../controllers/orderController.js";
 
 const router = express.Router();
 
-router.get('/list', listOrders);
+router.get('/list', listOrders)
 router.post('/status', productStatus);
 
 

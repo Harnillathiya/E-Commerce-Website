@@ -1,15 +1,15 @@
-.list-table-format {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 15px;
-  border: 1px solid #cacaca;
-  font-size: 13px;
+.list-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
-.list-table-format.title {
-  background-color: #f9f9f9;
+
+.table-title {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
-.list-table-format img {
-  width: 50px;
+
+.ant-table-thead > tr > th {
+  background: #f0f2f5;
 }

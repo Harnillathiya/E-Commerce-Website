@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: 'user',
     },
+    ratings: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Rating'
+    }], 
     cartData: [cartItemSchema],
   },
   { minimize: false }

@@ -1,41 +1,78 @@
-import { Container } from '@mui/material'
-import React, { useContext, useEffect } from 'react'
-import { ToastContainer } from 'react-bootstrap'
-import { Route, Routes } from 'react-router-dom'
-import Navbar from "../Components/Navbar/Navbar";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import Add from "../Pages/Add/Add";
-import Orders from "../Pages/Orders/Orders";
-import List from "../Pages/List/List";
+import React, { useContext, useEffect } from 'react';
+import { DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined, LogoutOutlined, LoginOutlined, TagOutlined,StarOutlined   } from '@ant-design/icons';
+import { Layout, Menu, theme, Avatar, Dropdown, Space } from 'antd';
+import { Link, Outlet } from 'react-router-dom';
 import { Mycontext } from '../../App';
-import Update from '../Pages/Update/Update';
+import './Dashboard.css';
 
+const { Header, Content } = Layout;
 
-const Dashboard = () => {
-    const { url, setIsHeaderShow } = useContext(Mycontext);
-    useEffect(() => {
-        setIsHeaderShow(false);
-    }, [setIsHeaderShow]);
-    return (
-
-        <div>
-            <ToastContainer />
-            <Navbar />
-            <hr />
-            <Container >
-                <div className="app-content">
-                    <Sidebar />
-                    <Routes>
-                        <Route path="/add" element={<Add url={url} />} />
-                        <Route path="/list" element={<List url={url} />} />
-                        <Route path="/orders" element={<Orders url={url} />} />
-                        <Route path="/update" element={<Update url={url} />} />
-                    </Routes>
-                </div>
-            </Container>
-        </div>
-
-    )
+function getItem(label, key, icon, children) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+  };
 }
 
-export default Dashboard
+const items = [
+  getItem(' Dashboard1', '', <PieChartOutlined />),
+  getItem('Add', 'add', <DesktopOutlined />),
+  getItem('Orders', 'orders', <TeamOutlined />),
+  getItem('List', 'list', <FileOutlined />),
+  getItem('Category', 'category', <TagOutlined />),
+  getItem('Reviews', 'reviews', <StarOutlined    />),
+];
+
+const Dashboard = () => {
+  const { token: { colorBgContainer, borderRadiusLG } } = theme.useToken();
+  const { setIsHeaderShow, setIsNavberShow } = useContext(Mycontext);
+
+  useEffect(() => {
+    setIsHeaderShow(false);
+  }, [setIsHeaderShow, setIsNavberShow]);
+
+  const userMenu = (
+    <Menu>
+      <Menu.Item key="login" icon={<LoginOutlined />}>
+        <Link to="/login">Login</Link>
+      </Menu.Item>
+      <Menu.Item key="logout" icon={<LogoutOutlined />}>
+        <Link to="/login">Logout</Link>
+      </Menu.Item>
+    </Menu>
+  );
+
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <Header className="header-content">
+        <div className="logo">My Logo</div>
+        <Dropdown overlay={userMenu}>
+          <Space>
+            <Avatar icon={<UserOutlined />} className="avatar" />
+          </Space>
+        </Dropdown>
+      </Header>
+      <Menu mode="horizontal" theme="dark" className="header-menu " >
+        {items.map(item => (
+          <Menu.Item key={item.key}>
+            <Link to={item.key}>
+              {item.icon}
+              <span>{item.label}</span>
+            </Link>
+          </Menu.Item>
+        ))}
+      </Menu>
+      <Layout>
+        <Content style={{ margin: '16px' }}>
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer, borderRadius: borderRadiusLG }}>
+            <Outlet />
+          </div>
+        </Content>
+      </Layout>
+    </Layout>
+  );
+};
+
+export default Dashboard;

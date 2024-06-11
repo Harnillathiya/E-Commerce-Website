@@ -81,3 +81,38 @@
   background-color: #0056b3;
   color: #fff;
 }
+.order {
+  margin: 50px;
+}
+
+.range-picker-container {
+  margin-bottom: 20px;
+}
+
+.range-picker {
+  width: 100%;
+}
+
+.orders-table {
+  margin-top: 20px;
+}
+
+.orders-button {
+  width: 100%;
+}
+
+.address p {
+  margin: 0;
+}
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}

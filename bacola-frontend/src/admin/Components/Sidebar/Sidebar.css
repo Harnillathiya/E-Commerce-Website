@@ -1,46 +1,44 @@
 .sidebar_2 {
-  width: 18%;
-  min-height: 100vh;
-  border: 1.5px solid #a9a9a9;
-  border-top: 0;
-  font-size: max(1vw, 10px);
+  width: 250px !important;
+  height: 100%;
+  background-color: #333;
+  position: fixed;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
 .sidebar-options {
-  padding-top: 50px;
-  padding-left: 20%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
 }
 
 .sidebar-option {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 10px;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  width: 100% !important;
+  color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
 }
 
 .sidebar-option:hover {
-  background-color: #f0f0f0;
-  color: #333; /* Change the color to your preference */
-  border-radius: 20px;
+  background-color: #555;
+  border-left: 5px solid #FFD700; /* Change the color as per your preference */
+  transition: all 0.3s ease;
 }
 
 .sidebar-option img {
-  width: 20px; /* Adjust the width of the image */
-  height: 20px; /* Adjust the height of the image */
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 .sidebar-option p {
   margin: 0;
-  font-size: 14px; /* Adjust the font size of the text */
 }
 
-.sidebar-option.active {
-  background-color: #fff0ed;
-  border-color: tomato;
-}
+
