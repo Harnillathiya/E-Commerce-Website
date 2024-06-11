@@ -62,6 +62,7 @@
 .newsletter .newsletter-inner .newsletter-content form button {
     border: 0;
     border-radius: 50px;
+    width: 100%;
     font-weight: 700;
     background-color: #3BB77E;
 }
